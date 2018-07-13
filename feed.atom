@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+	<link rel="self" href="https://swenug.se/" />
+	<id>https://swenug.se/</id>
+	<title>Sweden .Net user group</title>
+	<rights>2018</rights>
+	<updated>2018-07-13T12:03:21Z</updated>
+</feed>
