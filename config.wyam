@@ -1,0 +1,8 @@
+#recipe Docs
+
+Settings[Keys.Host] = "swenug.se";
+Settings[Keys.LinksUseHttps] = true;
+Settings[DocsKeys.Title] = "Sweden .Net user group";
+Settings[DocsKeys.Logo] = "/assets/img/icon.png";
+Settings[DocsKeys.IncludeDateInPostPath] = true;
+Settings[DocsKeys.BaseEditUrl] = "https://github.com/SweNug/swenug.github.io/blob/develop/input/";

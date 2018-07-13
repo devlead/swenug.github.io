@@ -1,0 +1,31 @@
+@{
+    var pages = Context
+        .Documents[Docs.Pages]
+        .Where(x => x.Bool(DocsKeys.ShowInNavbar, true))
+        .Where(x => x.FilePath(Keys.RelativeFilePath)?.FullPath?.StartsWith("index") == (bool?)false)
+        .Select(x => new {
+                            Title = x.WithoutSettings.String(Keys.Title),
+                            Link = Context.GetLink(x),
+                            Order = x.Get<int>(DocsKeys.Order, 1000)
+        })
+        .Where(x => !string.IsNullOrEmpty(x.Title))
+        .OrderBy(x => x.Order)
+        .ThenBy(x => x.Title)
+        .ToList();
+
+    if(Documents[Docs.BlogPosts].Any())
+    {
+        pages.Add(new { Title = "Blog", Link = Context.GetLink(Context.String(DocsKeys.BlogPath)), Order = 1000 });
+    }
+
+    if(Documents[Docs.Api].Any())
+    {
+        pages.Add(new { Title = "API", Link = Context.GetLink(Context.DirectoryPath(DocsKeys.ApiPath)), Order = 1000 });
+    }
+
+    foreach(var page in pages)
+    {
+        string active = Context.GetLink(Document).StartsWith(page.Link) ? "active" : null;
+        <li class="@active"><a href="@page.Link">@page.Title</a></li>
+    }
+}
