@@ -23,9 +23,9 @@
         pages.Add(new { Title = "API", Link = Context.GetLink(Context.DirectoryPath(DocsKeys.ApiPath)), Order = 1000 });
     }
 
-    foreach(var page in pages)
+    foreach(var p in pages)
     {
-        string active = Context.GetLink(Document).StartsWith(page.Link) ? "active" : null;
-        <li class="@active"><a href="@page.Link">@page.Title</a></li>
+        string active = Context.GetLink(Document).StartsWith(p.Link) ? "active" : null;
+        <li class="@active"><a href="@p.Link">@p.Title</a></li>
     }
 }
